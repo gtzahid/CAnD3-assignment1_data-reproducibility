@@ -1,0 +1,58 @@
+---
+title: "CAnD3 RRWM"
+author: "Galiba Zahid"
+date: "2024-09-14"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#Read in downloaded data
+d1 <- read.csv("C:\\Users\\Galiba\\Desktop\\gss-12M0025-E-2017-c-31_F1.csv")
+#Check variable names and summaries of variable
+names(d1)
+
+table(d1$SEX)
+table(d1$MARSTAT)
+summary(d1$AGEC)
+```
+
+```{r}
+
+#load packages using the following code
+library(tidyverse)
+library(tibble)
+library(dplyr)
+
+#recode variable MARSTAT
+d1$MARSTAT2 <- recode(d1$MARSTAT,
+                      "1" = "married/common-law",
+                      "2" = "married/common-law",
+                      "3" = "single now/previously married",
+                      "4" = "single now/previously married",
+                      "5" = "single now/previously married",
+                      "6" = "never married",
+                      "96" = NA_character_,
+                      "97" = NA_character_,
+                      "98" = NA_character_,
+                      "99" = NA_character_)
+# table featuring descriptive stats
+table(d1$MARSTAT2)
+
+# regression analysis
+library(broom)
+
+reg1 <- lm(AGEC ~ SEX + MARSTAT2, data = d1)
+reg1
+
+#table featuring regression results
+tidy_results <- tidy(reg1)
+print(tidy_results)
+
+```
+

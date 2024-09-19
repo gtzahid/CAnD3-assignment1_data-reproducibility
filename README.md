@@ -41,7 +41,8 @@ Statistics Canada. 2020. General Social Survey, Cycle 31, 2017 [Canada]: Family 
 'RRWM_GZ.Rmd'             | Calls Scripts to Conduct All Analyses
 'RRWM_GZ-read'            | PDF version of the program
 'GZ_Research Replicability| PDF version of replicability steps
-and Workflow Management'  |
+and Workflow Management'  
+'RRWM Output'             | Analyses Output
 
 
 
